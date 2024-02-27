@@ -1,4 +1,4 @@
 from deepface import DeepFace
-
-dfs = DeepFace.find(img_path = "truonggiang_test.png", db_path = "./faces/")
+print("ok")
+dfs = DeepFace.find(img_path = "face3.jpg", db_path = "./faces/", model_name='VGG-Face')
 print(dfs)
