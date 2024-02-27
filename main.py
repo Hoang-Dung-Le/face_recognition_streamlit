@@ -21,6 +21,7 @@ if __name__ == "__main__":
 
     # In ra đường dẫn của tất cả các ảnh trong thư mục
     for path in image_paths:
+        print(path)
         dfs = DeepFace.find(img_path = path, db_path = "/content/Face Data/Data_Test", model_name='VGG-Face')
         print(dfs)
         break
