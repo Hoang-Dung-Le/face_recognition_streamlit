@@ -3,26 +3,24 @@ import os
 # print("ok")
 # dfs = DeepFace.find(img_path = "face3.jpg", db_path = "./faces/", model_name='VGG-Face')
 # print(dfs)
+def get_image_paths(directory):
+    image_paths = []
+    valid_image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp']  # Các định dạng ảnh hỗ trợ
 
-def recognize_images(source_folder):
-    total_similarity = 0
-    total_images = 0
-
-    # Duyệt qua từng tập tin ảnh trong thư mục nguồn
-    for root, dirs, files in os.walk(source_folder):
-        for file_name in files:
-            image_path = os.path.join(root, file_name)
-
-            # Nếu là tập tin ảnh, tiến hành nhận diện
-            if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')):
-                # Nhận diện khuôn mặt trong ảnh
-                result = DeepFace.find(img_path=image_path, db_path="/content/Face Data/Data_Test", model_name='VGG-Face')
-                print(result)
-                break
-            break
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            file_path = os.path.join(root, file)
+            _, file_extension = os.path.splitext(file_path)
+            if file_extension.lower() in valid_image_extensions:
+                image_paths.append(file_path)
+    return image_paths
 
 if __name__ == "__main__":
-    print("========= Bắt đầu ==========")
-    source_folder = "/content/Face Data/Data_Test1"  # Thư mục chứa ảnh khuôn mặt để so sánh
+    directory_path = '/content/Face Data/Data_Test1'
+    image_paths = get_image_paths(directory_path)
 
-    recognize_images(source_folder)
+    # In ra đường dẫn của tất cả các ảnh trong thư mục
+    for path in image_paths:
+        dfs = DeepFace.find(img_path = path, db_path = "/content/Face Data/Data_Test", model_name='VGG-Face')
+        print(dfs)
+        break
