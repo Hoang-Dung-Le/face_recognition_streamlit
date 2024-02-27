@@ -4,7 +4,7 @@ import os
 # dfs = DeepFace.find(img_path = "face3.jpg", db_path = "./faces/", model_name='VGG-Face')
 # print(dfs)
 
-def recognize_images(source_folder, face_db_folder):
+def recognize_images(source_folder):
     total_similarity = 0
     total_images = 0
 
@@ -16,14 +16,13 @@ def recognize_images(source_folder, face_db_folder):
             # Nếu là tập tin ảnh, tiến hành nhận diện
             if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')):
                 # Nhận diện khuôn mặt trong ảnh
-                result = DeepFace.find(img_path=image_path, db_path=face_db_folder, model_name='VGG-Face')
+                result = DeepFace.find(img_path=image_path, db_path="/content/Face Data/Data_Test", model_name='VGG-Face')
                 print(result)
                 break
             break
 
 if __name__ == "__main__":
     print("========= Bắt đầu ==========")
-    face_db_folder = "/content/Face Data/Data_Test"
     source_folder = "/content/Face Data/Data_Test1"  # Thư mục chứa ảnh khuôn mặt để so sánh
 
-    recognize_images(source_folder, face_db_folder)
+    recognize_images(source_folder)
