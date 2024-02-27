@@ -40,6 +40,7 @@ def recognize_images(source_folder, face_db_folder):
         print("\nKhông có ảnh nào trong tập test.")
 
 if __name__ == "__main__":
+    print("========= Bắt đầu ==========")
     face_db_folder = "/content/Face Data/Data_Test"
     source_folder = "/content/Face Data/Face Dataset"  # Thư mục chứa ảnh khuôn mặt để so sánh
 
