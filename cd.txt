@@ -1,0 +1,24 @@
+# app = FastAPI()
+
+# app.add_middleware( #parametros pra liberar a conexao
+#     CORSMiddleware,
+#     allow_origins=["*"],
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
+
+# @app.post("/predict_image")
+# async def predict_image(file: UploadFile):
+#     contents = await file.read()
+#     image = Image.open(io.BytesIO(contents))
+    
+#     image = np.array(image)
+
+#   # Đảo channel từ RGB sang BGR
+#     image = image[:, :, ::-1]
+#     # Process the image array using DeepFace or other libraries
+#     dfs = DeepFace.find(img_path=image, db_path="./DI20Z6A1/")
+
+#     return {
+#         "result": dfs
+#     }
